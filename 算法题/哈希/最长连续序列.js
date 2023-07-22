@@ -17,3 +17,4 @@ for (const num of numsSet) {
 }
 
 console.log(longest);
+export {}
