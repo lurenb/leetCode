@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      canvas {
+        border: 1px solid rgb(109, 220, 44);
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="tutorial" width="300" height="300"></canvas>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("tutorial");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+          ctx.fillStyle = "rgb(255,165,0)";
+          ctx.strokeStyle = "rgb(255,0,0)";
+          ctx.lineWidth = 5;
+          // 末端样式
+          ctx.lineCap = "square"; // 'butt' 'round' 'square'
+          // 线与线连接处的样式
+          ctx.lineJoin = "miter"; // 'round' 'bevel' 'miter'
+          ctx.beginPath();
+          ctx.moveTo(20, 20);
+          ctx.lineTo(20, 100);
+          ctx.lineTo(100, 100);
+          ctx.stroke();
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.setLineDash([4, 2]);
+          ctx.lineDashOffset = -10;
+          ctx.strokeRect(10, 10, 100, 100);
+
+          ctx.beginPath();
+          var lineargradient = ctx.createLinearGradient(150, 150, 300, 300);
+          lineargradient.addColorStop(0, "white");
+          lineargradient.addColorStop(1, "black");
+          // 创建渐变颜色，创建完需要通过 fillstyle或strokestyle进行应用
+          ctx.fillStyle = lineargradient;
+          ctx.fillRect(150, 150, 150, 150);
+          ctx.beginPath();
+          // 阴影
+          ctx.fillStyle = "black";
+          ctx.strokeStyle = "black";
+          ctx.shadowOffsetX = 2;
+          ctx.shadowOffsetY = 2;
+          ctx.shadowBlur = 2;
+          ctx.font = "50px Times New Roman";
+          ctx.shadowColor = "blue";
+          ctx.fillText("sample string", 5, 30);
+          ctx.strokeText("sample string", 5, 150);
+        }
+      }
+    </script>
+  </body>
+</html>

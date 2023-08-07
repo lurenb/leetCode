@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      canvas {
+        border: 1px solid rgb(109, 220, 44);
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="tutorial" width="300" height="300"></canvas>
+    <script>
+      function draw() {
+        var canvas = document.getElementById("tutorial");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+          ctx.fillStyle = "rgb(255,165,0)";
+          ctx.strokeStyle = "rgb(255,0,0)";
+          var rectangle = new Path2D();
+          rectangle.rect(10, 10, 50, 50);
+
+          var circle = new Path2D();
+          circle.moveTo(125, 35);
+          circle.arc(100, 35, 25, 0, 2 * Math.PI);
+
+          ctx.stroke(rectangle);
+          ctx.fill(circle);
+        }
+      }
+    </script>
+  </body>
+</html>

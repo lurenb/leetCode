@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      canvas {
+        border: 1px solid rgb(109, 220, 44);
+      }
+    </style>
+  </head>
+  <body onload="draw()">
+    <canvas id="tutorial" width="225" height="200"></canvas>
+    <script>
+      const nameList = [
+        "张伟",
+        "王伟",
+        "王芳",
+        "李伟",
+        "李娜",
+        "张敏",
+        "李静",
+        "王静",
+        "刘伟",
+        "王秀英",
+        "张丽",
+        "李秀英",
+      ];
+      function draw() {
+        var canvas = document.getElementById("tutorial");
+        if (canvas.getContext) {
+          //绘制矩形
+          var ctx = canvas.getContext("2d");
+          ctx.fillStyle = "rgb(240, 240, 240)";
+          for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 3; j++) {
+              ctx.fillRect(5 + i * 55, 5 + j * 55, 50, 50);
+            }
+          }
+          ctx.fillStyle = "rgb(158,158,158)";
+          ctx.font = "11px serif";
+          ctx.textAlign = "center";
+          for (let i = 0; i < nameList.length; i++) {
+            let row = Math.floor(i / 4);
+            let col = i % 4;
+            let x = 30 + col * 55;
+            let y = 30 + row * 55;
+
+            ctx.fillText(nameList[i], x, y);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
