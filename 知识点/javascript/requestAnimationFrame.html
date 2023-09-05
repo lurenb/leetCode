@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="ul"></ul>
+    <script>
+      /*
+        requestAnimationFrame 调用频率通常为每秒60次，
+        用于在下一次浏览器重绘之前调用指定函数的方法
+        它保证回调函数在屏幕每一次的刷新间隔中被执行一次
+        */
+      let now = Date.now();
+
+      const total = 10000;
+      const once = 20;
+      const page = total / once;
+      let index = 1;
+      const ul = document.getElementById("ul");
+
+      function loop(curTotal, curIndex) {
+        if(curTotal <= 0){
+            return false
+        }
+        let pageCount = Math.min(curTotal,once)
+        requestAnimationFrame(()=>{
+            // 虚拟文档碎片相当于一个临时仓库
+            let fragment = document.createDocumentFragment()
+            for(let i = 0;i<pageCount;i++){
+                let li = document.createElement('li')
+                li.innerHTML = curIndex+i+':'+~~(Math.random()*total)
+                fragment.appendChild(li)
+            }
+            ul.appendChild(fragment)
+            loop(curTotal-pageCount,curIndex+pageCount)
+        })
+      }
+      loop(total,index)
+    </script>
+  </body>
+</html>

@@ -12,7 +12,7 @@ Function.prototype.mycall = function(thisArg,...args){
     var fn = this
     thisArg = thisArg? Object(thisArg):window
     thisArg.fn = fn
-    var res = thisArg.fn()
+    var res = thisArg.fn(...args)
     delete thisArg.fn
     return res
 }

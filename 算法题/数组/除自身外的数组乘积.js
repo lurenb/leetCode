@@ -1,9 +1,8 @@
 const nums = [1, 2, 3, 4];
-
 var productExceptSelf = function (nums) {
   const starArr = [];
   const endArr = [];
-  const res = []
+  const res = [];
   for (let i = 0; i < nums.length; i++) {
     if (i == 0) {
       starArr.push(nums[i]);
@@ -16,8 +15,10 @@ var productExceptSelf = function (nums) {
   console.log(starArr);
   console.log(endArr);
   for (let i = 0; i < nums.length; i++) {
-    starArr[i-1]*endArr[]
-    res.push()
+    if (i - 1 >= 0 && nums.length - 2 - i >= 0) {
+      starArr[i - 1] * endArr[nums.length - 2 - i];
+    }
+    res.push();
   }
 };
 productExceptSelf(nums);
